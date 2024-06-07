@@ -75,9 +75,8 @@
       ];
 
       perSystem =
-        { pkgs, system, ... }:
+        { system, ... }:
         let
-          inherit (builtins) match substring stringLength;
           nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
           pkgs = import nixpkgs {
