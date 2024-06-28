@@ -79,9 +79,10 @@
         let
           nixvimLib = nixvim.lib.${system};
           nixvim' = nixvim.legacyPackages.${system};
+          plugin-overlay = import ./overlays/plugins.nix inputs;
           pkgs = import nixpkgs {
             inherit system;
-            overlays = [ ((import ./overlays/plugins.nix) inputs) ];
+            overlays = [ plugin-overlay ];
           };
           nixvimModule = {
             inherit pkgs;
